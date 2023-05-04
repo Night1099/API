@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chuck Norris Jokes</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h1>Chuck Norris Jokes</h1>
+  <button onclick="getRandomJoke()">Get Random Joke</button>
+  <p id="joke"></p>
+
+  <script>
+    function getRandomJoke() {
+      axios.get('https://api.chucknorris.io/jokes/random')
+        .then(function(response) {
+          var joke = response.data.value;
+          document.getElementById('joke').textContent = joke;
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    }
+  </script>
+</body>
+</html>
